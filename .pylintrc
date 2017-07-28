@@ -1,0 +1,14 @@
+[MESSAGES CONTROL]
+# fixme: TODOs should be allowed.
+# too-few-public-methods: Any number of public methods is OK in a class.
+# missing-docstring: Modules (files) don't always need a docstring. It's nice to warn for public
+# methods, but the linter is too noisy overall.
+# no-self-use: This check (for pure functions) is too strict for abstract methods, and generally
+# annoying to comply with in Python due to scoping.
+disable=fixme,too-few-public-methods,missing-docstring,no-self-use
+
+[BASIC]
+# Allow any name for a constant. Anything top-level in a file is considered "constant", which is too
+# strict.
+const-name-hint=(([a-z][a-z0-9_]{2,30})|(_[a-z0-9_]*))$
+const-rgx=(([a-z][a-z0-9_]{2,30})|(_[a-z0-9_]*))$
