@@ -3,6 +3,8 @@
 kubernetes == 3.0.0a1
 # Required for SSL to work.
 requests[security]>=2.10.0
+# Transitive dependency with some exceptions used.
+urllib3
 
 # Dev requirements.
 
