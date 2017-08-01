@@ -35,3 +35,11 @@ For style checking, this uses [pylint](https://www.pylint.org/). Configuration i
 Both of these will be installed from requirements.txt.
 
 You can run both on all project files by executing [presubmit.sh](./presubmit.sh).
+
+## Unit Tests
+
+You can run all unit tests from the base directory by running:
+
+```bash
+python3 -m unittest
+```
