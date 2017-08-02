@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
-from initializer.resource_handler import ResourceHandler
+from ai2.kubernetes.initializer.resource_handler import ResourceHandler
 
 
 class TestResourceHandler(unittest.TestCase):

@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import Mock
 
-from initializer.rejection import Rejection
-from initializer.resource_controller import ResourceController
+from ai2.kubernetes.initializer.rejection import Rejection
+from ai2.kubernetes.initializer.resource_controller import ResourceController
 
 
 class TestResourceController(unittest.TestCase):

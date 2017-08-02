@@ -4,8 +4,8 @@ from unittest.mock import Mock
 from kubernetes.client.models.v1_initializer import V1Initializer
 from kubernetes.client.models.v1_initializers import V1Initializers
 
-from initializer.initializer_controller import InitializerController
-from initializer.rejection import Rejection
+from ai2.kubernetes.initializer.initializer_controller import InitializerController
+from ai2.kubernetes.initializer.rejection import Rejection
 
 
 class TestInitializerController(unittest.TestCase):
