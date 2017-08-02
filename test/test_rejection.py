@@ -1,6 +1,6 @@
 import unittest
 
-from initializer.rejection import Rejection
+from ai2.kubernetes.initializer.rejection import Rejection
 
 
 class TestRejection(unittest.TestCase):
