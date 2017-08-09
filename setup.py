@@ -35,4 +35,4 @@ setup(
     ],
     keywords='kubernetes initializer',
     packages=find_packages(exclude=['test']),
-    install_requires=['kubernetes', 'requests[security]', 'urllib3'])
+    install_requires=['kubernetes>=3.0.0b1', 'requests[security]', 'urllib3'])
