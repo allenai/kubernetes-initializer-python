@@ -1,0 +1,16 @@
+# InitializerConfiguration for the propagate_owner initializer.
+apiVersion: admissionregistration.k8s.io/v1alpha1
+kind: InitializerConfiguration
+metadata:
+  name: propagate-owner
+initializers:
+  # Doc copied from Kubernetes sample:
+  # 'the name needs to be fully qualified, i.e., containing at least two "."'
+  - name: owner.propagate.example
+    rules:
+      - apiGroups:
+          - "*"
+        apiVersions:
+          - "*"
+        resources:
+          - deployments

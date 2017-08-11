@@ -1,0 +1,18 @@
+# InitializerConfiguration for the require_owner initializer.
+apiVersion: admissionregistration.k8s.io/v1alpha1
+kind: InitializerConfiguration
+metadata:
+  name: require-owner
+initializers:
+  # Doc copied from Kubernetes sample:
+  # 'the name needs to be fully qualified, i.e., containing at least two "."'
+  - name: owner.require.example
+    rules:
+      - apiGroups:
+          - "*"
+        apiVersions:
+          - "*"
+        resources:
+          - deployments
+          - jobs
+          - pods
