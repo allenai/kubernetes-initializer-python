@@ -47,7 +47,7 @@ First, you need to [create a PyPi account](https://pypi.python.org/pypi?%3Aactio
 Once you have the appropriate role:
 
 1. Increment the version in [`setup.py`](./setup.py).
-2. Send the updated version out for review
+2. Send the updated version out for review.
 3. After merging, `git tag` the repo with the version number & push to github:
 
    ```bash
@@ -56,6 +56,6 @@ Once you have the appropriate role:
    git tag -a v{version} -m v{version}
    git push --tags upstream
    ```
-4. Run `./bin/dist.sh` in *a clean repository* to build the distribution
-5. Run `twine upload dist/*` from the project root to push the built distribution to PyPi
+4. Run `./bin/dist.sh` in *a clean repository* to build the distribution.
+5. Run `twine upload dist/*` from the project root to push the built distribution to PyPi.
 6. Go to [the releases page](https://github.com/allenai/kubernetes-initializer-python/releases) and update the new release with notes.
