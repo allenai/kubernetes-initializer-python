@@ -12,7 +12,7 @@ with open(os.path.join(dirname, 'PyPiReadme.rst'), encoding='utf-8') as f:
 
 setup(
     name='ai2-kubernetes-initializer',
-    version='0.1.0a1',
+    version='0.1.0b1',
     description='A simple Kubernetes initializer library.',
     long_description=long_description,
     url='https://github.com/allenai/kubernetes-initializer-python',
