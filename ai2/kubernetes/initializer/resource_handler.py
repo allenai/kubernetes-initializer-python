@@ -62,6 +62,28 @@ class ResourceHandler(object):
             update_item=core_client.replace_namespaced_pod)
 
     @staticmethod
+    def service_handler(api_client):
+        """
+        Constructs a handler for services using the given kubernetes.client.api_client.ApiClient.
+        """
+        core_client = kubernetes.client.CoreV1Api(api_client)
+        return ResourceHandler(
+            name='service',
+            list_all_items=core_client.list_service_for_all_namespaces,
+            update_item=core_client.replace_namespaced_service)
+
+    @staticmethod
+    def config_map_handler(api_client):
+        """
+        Constructs a handler for config maps using the given kubernetes.client.api_client.ApiClient.
+        """
+        core_client = kubernetes.client.CoreV1Api(api_client)
+        return ResourceHandler(
+            name='configmap',
+            list_all_items=core_client.list_config_map_for_all_namespaces,
+            update_item=core_client.replace_namespaced_config_map)
+
+    @staticmethod
     def job_handler(api_client):
         """Constructs a handler for jobs using the given kubernetes.client.api_client.ApiClient."""
         batch_client = kubernetes.client.BatchV1Api(api_client)
@@ -91,3 +113,14 @@ class ResourceHandler(object):
             name='daemonset',
             list_all_items=extensions_client.list_daemon_set_for_all_namespaces,
             update_item=extensions_client.replace_namespaced_daemon_set)
+
+    @staticmethod
+    def cron_job_handler(api_client):
+        """
+        Constructs a handler for cron jobs using the given kubernetes.client.api_client.ApiClient.
+        """
+        batch_alpha_client = kubernetes.client.BatchV2alpha1Api(api_client)
+        return ResourceHandler(
+            name='cronjob',
+            list_all_items=batch_alpha_client.list_cron_job_for_all_namespaces,
+            update_item=batch_alpha_client.replace_namespaced_cron_job)
