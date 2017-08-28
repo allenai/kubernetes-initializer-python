@@ -56,6 +56,6 @@ Once you have the appropriate role:
    git tag -a v{version} -m v{version}
    git push --tags upstream
    ```
-4. Run `./bin/dist.sh` in *a clean repository* to build the distribution.
+4. Run `./bin/build_dist.sh` in *a clean repository* to build the distribution.
 5. Run `twine upload dist/*` from the project root to push the built distribution to PyPi.
 6. Go to [the releases page](https://github.com/allenai/kubernetes-initializer-python/releases) and update the new release with notes.
