@@ -6,7 +6,7 @@ import time
 import kubernetes
 
 
-def main_loop(controller_constructor):
+def main_loop(controller_constructor, run_async=False):
     """
     Build a controller, and run update loop for the initializer.
 
@@ -19,6 +19,7 @@ def main_loop(controller_constructor):
     Args:
         controller_constructor: A function that takes a single argument, the kubernetes ApiClient,
             and returns the InitializerController to be run.
+        run_async: If true, run updates in the background.
     """
 
     # Format logs in a less-Pythonic way.
@@ -26,7 +27,7 @@ def main_loop(controller_constructor):
         level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(name)s:%(lineno)s - %(message)s')
 
     # Reduce log level for dependency libraries.
-    logging.getLogger('kubernetes').setLevel(logging.INFO)
+    # logging.getLogger('kubernetes').setLevel(logging.INFO)
 
     # Optional: Set the log level for 'ai2.kubernetes.initializer':
     # logging.getLogger('ai2.kubernetes.initializer').setLevel(logging.INFO)
@@ -37,13 +38,22 @@ def main_loop(controller_constructor):
     api_client = kubernetes.client.api_client.ApiClient()
     controller = controller_constructor(api_client)
 
-    # We want this loop to run frequently enough that clients aren't timing out while waiting for
-    # the initializer to complete.
-    # This uses a 5-second loop period, but you may wish for a shorter loop.
-    while True:
+    if run_async:
+
+        def error_handler(e):
+            print('Error encountered, exiting: {}'.format(e))
+            controller.halt_async_handle_updates()
+
+        controller.async_handle_updates(error_handler)
+    else:
+        # We want this loop to run frequently enough that clients aren't timing out while waiting
+        # for the initializer to complete.
+        # This uses a 5-second loop period, but you may wish for a shorter loop.
         # A production-quality handler should catch exceptions here.
-        controller.handle_update()
-        time.sleep(5)
+        while True:
+            # A production-quality handler should catch exceptions here.
+            controller.handle_update()
+            time.sleep(5)
 
 
 if __name__ == "__main__":
