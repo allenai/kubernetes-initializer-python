@@ -148,13 +148,13 @@ class InitializerController(object):
         initializers = item.metadata.initializers
         if (initializers and initializers.pending
                 and initializers.pending[0].name == self.initializer_name):
-            logger.debug('Processing %s %s:%s.', controller.name, item.metadata.namespace,
-                         item.metadata.name)
+            logger.info('Processing %s %s:%s.', controller.name, item.metadata.namespace,
+                        item.metadata.name)
             try:
                 updated_item = controller.handle_item(item)
-                logger.debug('Controller returned a value.')
+                logger.info('Controller accepted.')
             except Rejection as rejection:
-                logger.debug('Controller rejected.')
+                logger.info('Controller rejected.')
                 # Update the unmodified item, using the provided rejection reason.
                 updated_item = item
                 updated_item.metadata.initializers.result = rejection.status
