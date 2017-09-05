@@ -17,6 +17,11 @@ class ResourceController(object):
         """The name of the resource type being handled."""
         return self._resource_handler.name
 
+    @property
+    def list_all_items_fn(self):
+        """Returns the raw function which lists all items."""
+        return self._resource_handler.list_all_items_fn
+
     def list_all_items(self):
         """Returns the list of all items of the handled type in the Kubernetes server."""
         return self._resource_handler.list_all_items()

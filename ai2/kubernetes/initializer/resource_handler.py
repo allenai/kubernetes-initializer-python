@@ -35,6 +35,11 @@ class ResourceHandler(object):
         self._list_all_items = list_all_items
         self._update_item = update_item
 
+    @property
+    def list_all_items_fn(self):
+        """Returns the raw function which lists all items."""
+        return self._list_all_items
+
     def list_all_items(self):
         """Returns the list of all items of the handled type in the Kubernetes server."""
         return self._list_all_items(include_uninitialized="true")
